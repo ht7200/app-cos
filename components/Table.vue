@@ -13,23 +13,27 @@
     style="width: 100%"
     @selection-change="handleSelectionChange">
       <el-table-column
+        type="index"
+        width="50">
+    </el-table-column>
+      <el-table-column
         type="selection"
         width="55">
       </el-table-column>
       <el-table-column
-        label="日期"
-        width="120">
-        <template slot-scope="scope">{{ scope.row.date }}</template>
-      </el-table-column>
-      <el-table-column
         prop="name"
-        label="姓名"
-        width="120">
+        label="名称">
       </el-table-column>
-      <el-table-column
-        prop="address"
-        label="地址"
-        show-overflow-tooltip>
+      <el-table-column>
+        <template slot-scope="scope">
+        <el-button
+          size="mini"
+          @click="handleEdit(scope.$index, scope.row)">Edit</el-button>
+        <el-button
+          size="mini"
+          type="danger"
+          @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
+      </template>
       </el-table-column>
     </el-table>
     <div style="margin-top: 20px">
@@ -45,37 +49,23 @@
         input1:"",
         tableData: [{
           date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
+          name: '目录1',
         }, {
           date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
+          name: '目录1',
         }, {
           date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
+          name: '目录1',
         }, {
           date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-08',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-06',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-07',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
+          name: '目录1',
         }],
         multipleSelection: []
       }
     },
-
+    created(){
+      console.log(this.$nuxt.$route.path)
+    },
     methods: {
       toggleSelection(rows) {
         if (rows) {
@@ -88,6 +78,12 @@
       },
       handleSelectionChange(val) {
         this.multipleSelection = val;
+      },
+      handleEdit(index, row) {
+        console.log(index, row);
+      },
+      handleDelete(index, row) {
+        console.log(index, row);
       }
     }
   }

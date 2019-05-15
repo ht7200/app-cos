@@ -61,6 +61,6 @@
 </script>
 <style lang="less" scoped>
 .el-menu-vertical-demo{
-  min-height:100vh;
+  min-height: calc(100vh - 60px);
 }
 </style>

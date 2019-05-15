@@ -4,7 +4,7 @@
       <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>导航一</el-breadcrumb-item>
-      <el-breadcrumb-item>目录管理</el-breadcrumb-item>
+      <el-breadcrumb-item>{{itemName}}</el-breadcrumb-item>
     </el-breadcrumb>
     </el-row>
     <el-row>
@@ -27,11 +27,20 @@ import Table from './Table'
 export default {
   components:{
     Tree , Table
+  },
+  data() {
+    return {
+      path: this.$nuxt.$route.path,
+      itemName: this.$nuxt.$route.path == '/' ? '文件管理':'目录管理'
+    }
   }
 }
 </script>
 
 <style lang="less" scoped>
+  a{
+    text-decoration: none;
+  }
   .el-row {
     margin-bottom: 20px;
     &:last-child {
