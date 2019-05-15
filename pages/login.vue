@@ -9,14 +9,16 @@
           </el-col>
       </el-row>
       <el-row type="flex" justify="center">
-        <el-col :span="12" class="input-box">
+        <el-col :span="8" class="input-box">
           <el-form v-if="!$store.state.authUser" :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
-            <el-form-item label="用户名">
-              <el-input v-model="formUsername"></el-input>
-            </el-form-item>
-            <el-form-item label="密码">
-              <el-input v-model="formPassword"></el-input>
-            </el-form-item>
+            <div class="bg-box">
+              <el-form-item label="用户名">
+                <el-input v-model="formUsername"></el-input>
+              </el-form-item>
+              <el-form-item label="密码">
+                <el-input v-model="formPassword"></el-input>
+              </el-form-item>
+            </div>
             <el-button type="primary" @click="login">登录</el-button>
           </el-form>
           <div v-else>
@@ -46,7 +48,7 @@
 export default {
   data() {
     return {
-      labelPosition: 'right',
+      labelPosition: 'left',
       formLabelAlign: {
         name: '',
         region: '',
@@ -95,6 +97,12 @@ export default {
 }
 .input-box{
   text-align: center;
+  .bg-box{
+    padding: 30px 15px 10px;
+    background: #f7f7f7;
+    margin-bottom: 25px;
+    border-radius: 15px;
+  }
 }
 .error {
   color: red;
