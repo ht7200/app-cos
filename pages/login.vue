@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import sha512 from "js-sha512"
 export default {
   data() {
     return {
@@ -61,10 +62,15 @@ export default {
   },
   methods: {
     async login() {
+      let timestamp = new Date().getTime();
+      let pwd1 = sha512(`${this.formPassword}:yzyx`);
+      let pwd2 = sha512(`${pwd1}${timestamp}`);
+      console.log(pwd2);
       try {
         await this.$store.dispatch('login', {
-          username: this.formUsername,
-          password: this.formPassword
+          jobNo: this.formUsername,
+          pwd: pwd2,
+          timestamp: timestamp
         })
         this.formUsername = ''
         this.formPassword = ''

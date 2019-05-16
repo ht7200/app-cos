@@ -20,6 +20,7 @@
     "express": "^4.16.4",
     "express-session": "^1.16.1",
     "file-loader": "^1.1.4",
+    "js-sha512": "^0.8.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "nuxt": "^2.4.0",

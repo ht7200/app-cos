@@ -3,6 +3,7 @@ const session = require('express-session')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 const bodyParser = require('body-parser')
+const axios = require('axios')
 const app = express()
 
 // Import and Set Nuxt.js options
@@ -27,7 +28,7 @@ async function start() {
   }))
 
   // 发起 POST /api/login 请求完成用户登录，并添加该用户到 req.session.authUser
-  app.post('/api/login', function (req, res) {
+  app.post('/api/login', function *(req, res) {
     if (req.body.username === 'demo' && req.body.password === 'demo') {
       req.session.authUser = { username: 'demo' }
       return res.json({ username: 'demo' })
