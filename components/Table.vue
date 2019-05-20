@@ -48,17 +48,13 @@
       return {
         input1:"",
         tableData: [{
-          date: '2016-05-03',
           name: '目录1',
         }, {
-          date: '2016-05-02',
-          name: '目录1',
+          name: '目录2',
         }, {
-          date: '2016-05-04',
-          name: '目录1',
+          name: '目录3',
         }, {
-          date: '2016-05-01',
-          name: '目录1',
+          name: '目录4',
         }],
         multipleSelection: []
       }

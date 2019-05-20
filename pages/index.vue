@@ -21,7 +21,7 @@ import Aside from '~/components/Aside.vue'
 import Home from '~/components/Home.vue'
 
 export default {
-  middleware: 'auth',
+  // middleware: 'auth',
   components: {
     Logo , Header , Aside , Home
   }

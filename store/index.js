@@ -20,7 +20,6 @@ export const actions = {
     }
   },
   async login({ commit }, param) {
-    console.log(param)
     try {
       const { data } = await axios.post('http://crm.test.ahyzyx.cn/user/login', param)
       Message({ message: '该账户未分配角色,无法登录,请联系管理员!', type: 'warning'});
@@ -29,16 +28,16 @@ export const actions = {
           Message.message({ message: '该账户未分配角色,无法登录,请联系管理员!', type: 'warning'});
           return resolve(data.data.roles[0]);
         }
-        commit('user/SETNAME', data.data.name);
-        setStore('name', data.data.name);
-        commit('user/SETTOKEN', data.data.token);
-        setStore('token', data.data.token);
-        commit('user/SETALLROLE', data.data.roles);
-        setStore('allRole', data.data.roles);
-        commit('user/SETCURRENTROLE', data.data.roles[0].roleId);
-        setStore('currentRole', data.data.roles[0].roleId);
-        
-        resolve(data);
+        console.log(data)
+        commit('SET_USER', data.data.name)
+        // commit('user/SETNAME', data.data.name);
+        // setStore('name', data.data.name);
+        // commit('user/SETTOKEN', data.data.token);
+        // setStore('token', data.data.token);
+        // commit('user/SETALLROLE', data.data.roles);
+        // setStore('allRole', data.data.roles);
+        // commit('user/SETCURRENTROLE', data.data.roles[0].roleId);
+        // setStore('currentRole', data.data.roles[0].roleId);
       } else {
         throw new Error(data.message)
       }
